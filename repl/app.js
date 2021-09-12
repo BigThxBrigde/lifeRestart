@@ -343,8 +343,8 @@ class App {
             const s = this.#randomTalents[number];
             if(!s) return warn(`${number} 为未知天赋`);
             if(this.#talentSelected.has(s)) continue;
-            if(this.#talentSelected.size == 3)
-                return warn('⚠只能选3个天赋');
+            if(this.#talentSelected.size == 6)
+                return warn('⚠只能选6个天赋');
 
             const exclusive = this.#life.exclusive(
                 Array.from(this.#talentSelected).map(({id})=>id),
@@ -389,7 +389,7 @@ class App {
         let description, list, check;
         switch(this.#step) {
             case this.Steps.TALENT:
-                description = '🎉 请选择3个天赋';
+                description = '🎉 请选择6个天赋';
                 list = this.#randomTalents;
                 check = talent=>this.#talentSelected.has(talent);
                 break;
@@ -416,7 +416,7 @@ class App {
         const warn = (a, b) => `${a}\n${this.style('warn', this.style('warn', b))}`;
         switch(this.#step) {
             case this.Steps.TALENT:
-                if(this.#talentSelected.size != 3) return warn(this.list(), `⚠请选择3个天赋`);
+                if(this.#talentSelected.size != 6) return warn(this.list(), `⚠请选择6个天赋`);
                 this.#step = this.Steps.PROPERTY;
                 this.#propertyAllocation.total = 20 + this.#life.getTalentAllocationAddition(
                     Array.from(this.#talentSelected).map(({id})=>id)
