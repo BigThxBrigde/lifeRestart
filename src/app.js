@@ -353,6 +353,7 @@ class App{
             <div class="btn-area">
                 <button id="auto" class="mainbtn">自动播放</button>
                 <button id="auto2x" class="mainbtn">自动播放2x</button>
+                <button id="auto10x" class="mainbtn">自动播放10x</button>
                 <button id="summary" class="mainbtn">人生总结</button>
                 <button id="domToImage" class="mainbtn">人生回放</button>
             </div>
@@ -388,6 +389,7 @@ class App{
                     trajectoryPage.find('#summary').show();
                     trajectoryPage.find('#auto').hide();
                     trajectoryPage.find('#auto2x').hide();
+                    trajectoryPage.find('#auto10x').hide();
                     // trajectoryPage.find('#domToImage').show();
                 }
                 const property = this.#life.getLastRecord();
@@ -456,8 +458,10 @@ class App{
             .click(()=>auto(1000));
         trajectoryPage
             .find('#auto2x')
+            .click(()=>auto(500));
+        trajectoryPage
+            .find('#auto10x')
             .click(()=>auto(100));
-
         // Summary
         const summaryPage = $(`
         <div id="main">
@@ -642,8 +646,9 @@ class App{
                     this.#currentPage = 'trajectory';
                     trajectoryPage.find('#lifeTrajectory').empty();
                     trajectoryPage.find('#summary').hide();
-                    trajectoryPage.find('#auto').show();
+                    trajectoryPage.find('#auto').hide();
                     trajectoryPage.find('#auto2x').show();
+                    trajectoryPage.find('#auto10x').show();
                     this.#isEnd = false;
                 },
                 born: contents => {
