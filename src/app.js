@@ -456,7 +456,7 @@ class App{
             .click(()=>auto(1000));
         trajectoryPage
             .find('#auto2x')
-            .click(()=>auto(500));
+            .click(()=>auto(100));
 
         // Summary
         const summaryPage = $(`
