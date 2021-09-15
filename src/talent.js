@@ -99,23 +99,34 @@ class Talent {
             const length = talentList[grade].length;
 
             const random = Math.floor(Math.random() * length) % length;
-            return talentList[grade].splice(random, 1)[0];
+            const talent = talentList[grade].splice(random, 1)[0];
+            console.log(talent);
+            return talent;
         }
 
         const bingoTalent = () => {
+            const talents = [];
             let randomNumber = Math.floor(Math.random() * 1000);
+            //let randomNumber = 7;
             console.log(`You've got a bingo number ${randomNumber}`);
-            const bingoFactor= 2;
+            const bingoFactor = 2;
             if ((randomNumber % 5) === bingoFactor) {
                 console.log("You bingo an enlightenment talent");
-                let i = talentList[3].findIndex(v => v.id == specialTalentedId);
-                if (i > -1) {
-                    return talentList[3].splice(i, 1);
-                }
+                let i = talentList[3].findIndex(e => e.id === specialTalentedId);
+                talents.push(i > -1 ? talentList[3].splice(i, 1)[0] : this.#talents[specialTalentedId]);
+            } else {
+                let grade = randomGrade();
+                console.log(`You bingo a ${grade} level talent, good luck next time`);
+                talents.push(randomTalent(grade));
             }
-            let grade = randomGrade();
-            console.log(`You bingo a ${grade} level talent, good luck next time`);
-            return [randomTalent(grade)];
+            if (include && talents[0].id !== include.id) {
+                console.log(`Inherit talent:${include}`);
+                talents.push(include);
+            } else {
+                talents.push(randomTalent(randomGrade()));
+            }
+            console.log(talents);
+            return talents;
         }
 
         const shuffle = function (array) {
@@ -136,14 +147,11 @@ class Talent {
         }
 
         return shuffle(
-            bingoTalent()
-                .concat(
-                    shuffle([3, 3, 2, 2, 2, 1, 1, 1, 1]).map((v, i) => { return randomTalent(v); }))
-                .concat(
-                    new Array(10).fill(1).map((v, i) => {
-                        if (!i && include) return include;
-                        let grade = randomGrade();
-                        console.log(`You've random picked a ${grade} level talent`);
+            bingoTalent().concat(
+                [3, 3, 2, 2, 2].concat(new Array(13).fill(1))
+                    .map((v, i) => {
+                        let grade = i > 8 ? randomGrade() : v;
+                        console.log(`${i} : You've picked a ${grade} level talent`);
                         return randomTalent(grade);
                     }))
         );
