@@ -390,8 +390,9 @@
         "name": "神丶暴龙战士灬张杨"
     },
     {
-        "group": 2,
-        "name": "NovaDNG"
+        "group": 1,
+        "name": "NovaDNG",
+        "comment": "感谢你们为世界带来一些欢乐"
     },
     {
         "group": 2,
@@ -2441,6 +2442,26 @@
     },
     {
         "group": 2,
+        "name": "拓舟"
+    },
+    {
+        "group": 2,
+        "name": "又找不到了qwq"
+    },
+    {
+        "group": 2,
+        "name": "ClearMoon"
+    },
+    {
+        "group": 2,
+        "name": "碳烤的咕咕蛋"
+    },
+    {
+        "group": 2,
+        "name": "鞠培雯"
+    },
+    {
+        "group": 2,
         "name": "超级无敌暴龙战士"
     },
     {
@@ -4301,5 +4322,13 @@
     {
         "group": 2,
         "name": "『H』"
+    },
+    {
+        "group": 2,
+        "name": "魔法少女立花响"
+    },
+    {
+        "group": 2,
+        "name": "凞咥"
     }
 ]
